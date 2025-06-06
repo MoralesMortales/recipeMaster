@@ -4,7 +4,7 @@ import mainView from './components/mainView.vue'
 import navbar from './components/navbar/navbar.vue'
 
 import { getData } from './axios/axios.ts'
-getData();
+
 </script>
 
 <template>

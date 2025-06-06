@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white flex justify-between" style="height: 9dvh;" id="navbar">
+  <div class="w-full flex justify-between" style="height: 9dvh;" id="navbar">
     <div id="logo" class="h-full p-2">
       <img src="@/assets/img/logoKitchen.png" alt="" class="h-full">
     </div>
@@ -7,7 +7,7 @@
     <div id="right" class="h-full flex justify-center items-center">
       <div class="h-full flex justify-center">
         <q-toolbar>
-          <q-btn flat dense round icon="menu" size="22px" aria-label="Menu" @click="drawer = !drawer" />
+          <q-btn flat dense round icon="menu" size="22px" class="title" style="color: #528C53;" aria-label="Menu" @click="drawer = !drawer" />
         </q-toolbar>
       </div>
     </div>
@@ -62,4 +62,13 @@ const menuList = ref([
 
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.title{
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+</style>

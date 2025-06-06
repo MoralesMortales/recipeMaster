@@ -9,7 +9,7 @@ export const getData = () => {
       number: 2
     },
     headers: {
-      'x-api-key': token // or 'Authorization': `Bearer ${token}`
+      'x-api-key': token 
     }
   })
   .then(response => {
