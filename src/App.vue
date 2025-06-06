@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import mainView from './components/mainView.vue'
+import navbar from './components/navbar/navbar.vue'
+
+import { getData } from './axios/axios.ts'
+getData();
 </script>
 
 <template>
 
+  <navbar/>
   <mainView/>
 
 </template>
