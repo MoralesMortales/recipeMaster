@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
-import mainView from "./components/mainView.vue";
 import navbar from "./components/navbar/navbar.vue";
-
-import { getData } from "./axios/axios.ts";
 </script>
 
 <template>
-  <div class="relative min-h-screen flex flex-col">
-    <navbar />
-    <mainView class="relative flex-1" />
-  </div>
-</template>
+  <q-layout view="hHh Lpr lFf" class="min-h-screen flex flex-col">
 
-<style scoped></style>
+    <q-header elevated class="text-black">
+      <navbar />
+    </q-header>
+
+    <q-page-container class="flex flex-col flex-1">
+      <router-view class="flex-1" />
+    </q-page-container>
+
+  </q-layout>
+</template>
