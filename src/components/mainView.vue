@@ -24,7 +24,7 @@
             :class="{
               'bg-red-checked': food.selected,
               'bg-clear-noChecked': !food.selected,
-              'hover:bg-hoverState' : !food.selected, 
+              'hover:bg-hoverState': !food.selected,
             }"
           >
             <img :src="food.img" alt="" class="w-full h-full object-contain" />
@@ -32,11 +32,16 @@
         </label>
       </div>
     </main>
-    
-    <div class="w-full absolute bottom-44 flex justify-center items-center">
-      <button class="h-16 rounded-2xl w-56 hover:bg-btn-color-hover bg-btn-color text-4xl" id="btnAccept">Aceptar</button>
-    </div>
 
+    <div class="w-full absolute bottom-44 flex justify-center items-center">
+      <button
+        @click="goToListFood"
+        class="h-16 rounded-2xl w-56 hover:bg-btn-color-hover bg-btn-color text-4xl"
+        id="btnAccept"
+      >
+        Aceptar
+      </button>
+    </div>
   </div>
 </template>
 
@@ -45,6 +50,8 @@ import { ref } from "vue";
 import breadImg from "@/assets/img/food/bread.png";
 import tomatoImg from "@/assets/img/food/tomato.png";
 import potatoImg from "@/assets/img/food/potato.png";
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 const options = ref([
   {
@@ -63,13 +70,25 @@ const options = ref([
     selected: false,
   },
 ]);
-</script>
+
+const goToListFood = () => {
+  const selectedFoods = options.value
+    .filter(food => food.selected)
+    .map(food => food.name);
+
+  router.push({
+    name: 'listFood',
+    query: {
+      foods: JSON.stringify(selectedFoods) // Envía como string JSON
+    }
+  });
+};</script>
 
 <style lang="scss" scoped>
-.title, #btnAccept {
+.title,
+#btnAccept {
   font-family: "Abel", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
-
 </style>
