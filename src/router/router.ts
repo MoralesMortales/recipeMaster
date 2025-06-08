@@ -20,7 +20,8 @@ const routes = [
   {
   path: '/recipeDetails/:id',
   name: 'recipeDetails',
-  component: RecipeDetails
+  component: RecipeDetails,
+  props: true
 }
 ];
 

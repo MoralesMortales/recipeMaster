@@ -27,6 +27,8 @@ export const getRecipesByIngredients = async (ingredients: string[]) => {
 }
 
 export const getRecipeById = async (id: number) => {
+  console.log(id);
+  
   if (!id) {
     throw new Error('Debes proporcionar un ID de receta válido');
   }
@@ -34,7 +36,7 @@ export const getRecipeById = async (id: number) => {
   try {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
       params: {
-        includeNutrition: false // Puedes cambiar a true si necesitas datos nutricionales
+        includeNutrition: false
       },
       headers: {
         'x-api-key': token

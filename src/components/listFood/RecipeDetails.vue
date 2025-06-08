@@ -1,28 +1,54 @@
-
 <template>
-  <div class="">
-    holaa
+  <div v-if="recipe" class="">
+    <div class="h-40">
+      <div id="topLeft" class="h-full">
+        <img :src="recipe.image" class="h-full" alt="" />
+      </div>
+      <div class="flex flex-col" id="topRight">
+        <div class="top">
+          {{ recipe.title }}
+        </div>
+        <div class="">
+          <h4>Calorias totales:</h4>
+          <h4>Costo estimado: {{recipe.pricePerServing}}</h4>
+          <h4>Tiempo de preparacion estimado: {{recipe.readyInMinutes}}</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import { useRoute } from "vue-router";
+import { ref, onMounted } from "vue";
 import { getRecipeById } from "../../axios/axios";
 
-const route = useRoute();
-const isLoading = ref(false);
-const error = ref(null);
-
 const props = defineProps({
- id: {
+  id: {
     type: Number,
     required: true,
-  }
+  },
 });
 
-console.log(getRecipeById(props.id));
+const isLoading = ref(true);
+const error = ref(null);
+const recipe = ref(null);
 
+const fetchRecipe = async () => {
+  try {
+    isLoading.value = true;
+    recipe.value = await getRecipeById(props.id); // ¡Aquí usamos await!
+    console.log("Receta obtenida:", recipe.value);
+  } catch (err) {
+    error.value = err.message;
+    console.error("Error al obtener receta:", err);
+  } finally {
+    isLoading.value = false;
+  }
+};
+
+onMounted(() => {
+  fetchRecipe();
+});
 </script>
 
 <style lang="scss" scoped>
