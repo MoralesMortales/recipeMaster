@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import navbar from "./components/navbar/navbar.vue";
+import Navbar from "./components/navbar/Navbar.vue";
 </script>
 
 <template>
   <q-layout view="hHh Lpr lFf" class="min-h-screen flex flex-col">
 
     <q-header elevated class="text-black">
-      <navbar />
+      <Navbar />
     </q-header>
 
     <q-page-container class="flex flex-col flex-1">

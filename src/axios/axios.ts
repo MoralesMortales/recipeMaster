@@ -25,3 +25,26 @@ export const getRecipesByIngredients = async (ingredients: string[]) => {
     throw new Error('No se pudieron obtener las recetas. Por favor intenta nuevamente.');
   }
 }
+
+export const getRecipeById = async (id: number) => {
+  console.log(id);
+  
+  if (!id) {
+    throw new Error('Debes proporcionar un ID de receta válido');
+  }
+
+  try {
+    const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
+      params: {
+        includeNutrition: false
+      },
+      headers: {
+        'x-api-key': token
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching recipe details:', error);
+    throw new Error('No se pudo obtener la receta. Por favor intenta nuevamente.');
+  }
+}
