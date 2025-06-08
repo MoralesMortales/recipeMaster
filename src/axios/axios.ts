@@ -36,7 +36,7 @@ export const getRecipeById = async (id: number) => {
   try {
     const response = await axios.get(`https://api.spoonacular.com/recipes/${id}/information`, {
       params: {
-        includeNutrition: false
+        includeNutrition: true
       },
       headers: {
         'x-api-key': token
@@ -48,3 +48,5 @@ export const getRecipeById = async (id: number) => {
     throw new Error('No se pudo obtener la receta. Por favor intenta nuevamente.');
   }
 }
+
+
